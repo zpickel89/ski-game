@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://d8if6t4w2jdm"]
+[gd_scene load_steps=6 format=3 uid="uid://d8if6t4w2jdm"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/player/player.gd" id="1_dtya6"]
 [ext_resource type="Texture2D" uid="uid://bfxh402wo7sk" path="res://scenes/game_objects/player/player.png" id="1_q2wie"]
-[ext_resource type="PackedScene" uid="uid://c5g5hb41j3mvk" path="res://components/velocity_component.tscn" id="2_dd6x6"]
+[ext_resource type="PackedScene" uid="uid://c5g5hb41j3mvk" path="res://scenes/component/velocity_component.tscn" id="2_dd6x6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rs11a"]
-radius = 5.0
-height = 12.0
+radius = 4.0
+height = 10.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ds2tr"]
+radius = 5.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_dtya6")
@@ -19,5 +23,13 @@ script = ExtResource("1_dtya6")
 texture = ExtResource("1_q2wie")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+visible = false
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_rs11a")
+
+[node name="CollisionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
+shape = SubResource("CapsuleShape2D_ds2tr")

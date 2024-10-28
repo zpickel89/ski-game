@@ -23,6 +23,11 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 
+[global_group]
+
+player=""
+world=""
+
 [input]
 
 move_up={
@@ -49,6 +54,8 @@ move_left={
 [layer_names]
 
 2d_physics/layer_1="Terrain"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Obstacles"
 
 [rendering]
 
